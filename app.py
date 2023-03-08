@@ -74,8 +74,8 @@ elif(frequencia == 'Anual'):
 d_max = df_iSolar.index[-1]
 d_min = df_iSolar.index[0]
 
-d_i_lable = "Início do período (Mín: " + str(d_min.year) + "/" + str(d_min.month) + "/" + str(d_min.day) + "  " +  str(d_min.hour) + ")"
-d_f_lable = "Final do período (Máx: " + str(d_max.year) + "/" + str(d_max.month) + "/" + str(d_max.day) + "  " +  str(d_max.hour) + ")"
+d_i_lable = "Início do período (Mín: " + str(d_min.year) + "/" + str(d_min.month) + "/" + str(d_min.day) + ")"
+d_f_lable = "Final do período (Máx: " + str(d_max.year) + "/" + str(d_max.month) + "/" + str(d_max.day) + ")"
 
 
 row2col1, row2col2 = st.columns(2)
