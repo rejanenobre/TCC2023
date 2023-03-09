@@ -1,3 +1,20 @@
+# Diretorio: cd Desktop\Streamlit\TCC2023
+
+# Para executar o projeto: no teminal, no diretório.
+#			"streamlit run app.py"
+
+# Utilizando o Anaconda Navegator criamos o envoltório streamlitEnv
+# Instalar no Involtório:
+# pip install GitPython
+# pip install pandas
+# pip install streamlit
+# pip install dash
+# pip install openpyxl
+# pip install pipreqs -> pipreqs --encoding utf-8 "./" #no diretório do programa!
+
+# Saber pacotes instalados:
+# pip freeze
+
 # Importando bibliotecas a serem utilizadas
 import streamlit as st      			 			  # Produção simples de pag WEB
 import pandas as pd  					  					# Utilizado para trabalhar com planilhas
@@ -23,7 +40,8 @@ with st.sidebar:
 
 # Importando o DataFrame df_iSolar
 with st.spinner('Por favor, aguarde...'):
-		df_iSolar = pd.read_excel('iSolar.xlsx')
+		#df_iSolar = pd.read_excel('iSolar.xlsx')
+		df_iSolar = pd.read_csv('iSolar.csv', encoding='utf8', sep=';')
 		df_iSolar['Horário'] = pd.to_datetime(df_iSolar['Horário'])
 		df_iSolar.set_index("Horário", inplace = True)
 
