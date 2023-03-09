@@ -1,20 +1,3 @@
-# Diretorio: cd Desktop\Streamlit\TCC2023
-
-# Para executar o projeto: no teminal, no diretório.
-#			"streamlit run app.py"
-
-# Utilizando o Anaconda Navegator criamos o envoltório streamlitEnv
-# Instalar no Involtório:
-# pip install GitPython
-# pip install pandas
-# pip install streamlit
-# pip install dash
-# pip install openpyxl
-# pip install pipreqs -> pipreqs --encoding utf-8 "./" #no diretório do programa!
-
-# Saber pacotes instalados:
-# pip freeze
-
 # Importando bibliotecas a serem utilizadas
 import streamlit as st      			 			  # Produção simples de pag WEB
 import pandas as pd  					  					# Utilizado para trabalhar com planilhas
@@ -40,8 +23,7 @@ with st.sidebar:
 
 # Importando o DataFrame df_iSolar
 with st.spinner('Por favor, aguarde...'):
-		#df_iSolar = pd.read_excel('iSolar.xlsx')
-		df_iSolar = pd.read_csv('iSolar.csv', encoding='utf8', sep=';')
+		df_iSolar = pd.read_excel('iSolar.xlsx')
 		df_iSolar['Horário'] = pd.to_datetime(df_iSolar['Horário'])
 		df_iSolar.set_index("Horário", inplace = True)
 
@@ -135,8 +117,7 @@ if (var_Titulo == "Potência"):
 	  legend_title="Parametros")
 
 	fig.update_xaxes(rangeslider_visible=True)
-	# Ajustar tamanho
-	# Ajustar datas!
+	
 	st.plotly_chart(fig, theme=None, use_container_width=True)
 
 # ---- "CC" ----
@@ -160,7 +141,7 @@ elif (var_Titulo == "CC"):
 	fig.add_trace(go.Scatter(x=eixo_x, y=eixo_y,
 	                  mode='lines+markers',
 	                  name='MPPT1(A)',
-	                  line=dict(dash="solid",)),
+	                  line=dict(dash="solid")),
 	                  row=1, col=1)
 
 	eixo_y = df_iSolar_[filtro]['MPPT2(A)']
@@ -174,14 +155,16 @@ elif (var_Titulo == "CC"):
 	eixo_y = df_iSolar_[filtro]['MPPT1(V)']
 	fig.add_trace(go.Scatter(x=eixo_x, y=eixo_y,
 	                  mode='lines+markers',
-	                  name='MPPT1(V)'),
-	            	  row=2, col=1)
+	                  name='MPPT1(V)',
+	                  line=dict(dash="solid")),
+	            	    row=2, col=1)
 
 	eixo_y = df_iSolar_[filtro]['MPPT2(V)']
 	fig.add_trace(go.Scatter(x=eixo_x, y=eixo_y,
 	                  mode='lines+markers',
-	                  name='MPPT2(V)'),
-	           		  row=2, col=1)
+	                  name='MPPT2(V)',
+	                  line=dict(dash='dot')),
+	           		    row=2, col=1)
 	fig.update_yaxes(title_text="Tensão (V)", row=2, col=1)
 
 	eixo_y = df_iSolar_[filtro]['Potência CC total(kW)']
