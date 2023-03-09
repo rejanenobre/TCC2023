@@ -331,6 +331,6 @@ col1, col2 = st.columns(2)
 with col1:
 	st.info('Email: rejane.nobre.080@ufrn.edu.br', icon="✉️")
 with col2:
-	st.info('Github: rejanenobre', icon="💻")
+	st.info('Github: rejanenobre/TCC2023', icon="💻")
 
 st.info('UFRN - Natal/RN - 2023', icon="🎓", )
